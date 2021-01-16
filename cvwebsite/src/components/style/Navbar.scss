@@ -1,0 +1,80 @@
+// Menu Item Variables
+// The number of items in the menu
+$menu-items: 4;
+// We multiply it by 1% to get the correct % unit
+
+
+$size: 35%;
+$height: (100/$menu-items) * 1%;
+
+// Colors
+$background-color: #121212;
+$indicator-color: #e82d00;
+
+
+.navbar {
+    padding: 0;
+    margin-left: 25px;
+    height: $size;
+
+    flex-basis: 13%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    position: relative;
+}
+
+.navlist {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+
+    display: flex;
+    flex: 1;
+    align-items: center;
+
+    flex-direction: column;
+}
+
+@for $i from 1 through 4 {
+    .navitem.isActive:nth-child(#{$i}) ~ .slider {
+        top: $height * ($i - 1);
+    }
+}
+
+.navitem {
+    display: flex;
+    flex: 1;
+    z-index: 1;
+
+    align-items: center;
+    justify-content: stretch;
+
+    height: $height;
+    position: relative;
+
+    color: $background-color;
+    text-decoration: none;
+
+    &:hover {
+        color: $indicator-color;
+        font-size: 1.1em;
+    }
+
+    &.isActive {
+        color: $indicator-color !important;
+    }
+}
+
+.slider {
+    position: absolute;
+    width: 100%;
+    height: $height;
+    top: 0;
+    left: 0;
+    background: #121212;
+    z-index: -1;
+    transition: 0.5s;
+}

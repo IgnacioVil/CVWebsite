@@ -1,0 +1,12 @@
+.mainContainer {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    align-content: stretch;
+}
+
+.contentContainer {
+    flex: 1;
+    margin-left: 25px;
+    margin-right: 25px;
+}
