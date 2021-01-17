@@ -1,9 +1,10 @@
 import React from "react";
+import ContentPage from "./ContentPage";
 
 const Home = () => (
-    <div>
+    <ContentPage>
         <h1>Home</h1>
-    </div>
+    </ContentPage>
 );
 
 export default Home;

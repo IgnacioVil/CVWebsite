@@ -6,6 +6,7 @@
 }
 
 .contentContainer {
+    position: relative;
     flex: 1;
     margin-left: 25px;
     margin-right: 25px;

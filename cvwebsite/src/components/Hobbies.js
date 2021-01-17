@@ -1,10 +1,10 @@
 import React from "react";
 import ContentPage from "./ContentPage";
 
-const Abilities = () => (
+const Hobbies = () => (
     <ContentPage>
-        <h1>Abilities</h1>
+        <h1>Hobbies</h1>
     </ContentPage>
 );
 
-export default Abilities;
+export default Hobbies;

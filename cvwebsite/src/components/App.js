@@ -2,26 +2,63 @@ import React from 'react';
 import Navbar from './Navbar';
 import "./style/App.css";
 
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Home from "./Home";
-import Abilities from "./Abilities";
-import Experience from "./Experience";
+import {Switch, Route, useLocation, useHistory} from "react-router-dom";
 
-const App = () => (
+import * as routes from "../constants/routes";
+import {AnimatePresence} from "framer-motion";
 
-    <Router>
-        <div className="mainContainer">
+
+let prevLocation = null;
+
+const App = () => {
+
+    const location = useLocation();
+    if(prevLocation === null){
+        prevLocation = location;
+    }
+    const history = useHistory();
+
+    let lockScroll = false;
+
+    if(location !== prevLocation) {
+        lockScroll = true;
+        prevLocation = location;
+    }
+
+    function onAnimationEnd(){
+        lockScroll = false;
+        console.log("ENDOIND!");
+    }
+
+    function handleScroll(event) {
+        if(!lockScroll) {
+            let index = routes.getPageIndex(location.pathname);
+            if (event.deltaY > 0) {
+                if (index < routes.routes.length - 1)
+                    history.push(routes.routes[index + 1].path);
+            } else {
+                if (index > 0)
+                    history.push(routes.routes[index - 1].path);
+            }
+        }
+    }
+
+
+    let defineRoutes = [];
+    for(let i = 0; i < routes.routes.length; i++){
+        defineRoutes.push(<Route path={routes.routes[i].path} exact component={routes.routes[i].component} />)
+    }
+
+    return <div className="mainContainer" onWheel={handleScroll}>
         <Navbar />
             <div className="contentContainer">
-                <Switch>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/abilities" component={Abilities} />
-                    <Route path="/experience" component={Experience} />
-                </Switch>
+                <AnimatePresence onExitComplete={onAnimationEnd}>
+                    <Switch location={location} key={location.pathname}>
+                        {defineRoutes}
+                    </Switch>
+                </AnimatePresence>
             </div>
         </div>
-    </Router>
-
-);
+};
 
 export default App;

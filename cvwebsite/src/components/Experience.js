@@ -1,9 +1,10 @@
 import React from "react";
+import ContentPage from "./ContentPage";
 
 const Experience = () => (
-    <div>
+    <ContentPage>
         <h1>Experience</h1>
-    </div>
+    </ContentPage>
 );
 
 export default Experience;
