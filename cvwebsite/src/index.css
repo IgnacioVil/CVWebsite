@@ -9,18 +9,9 @@ body {
   margin: 0;
 
   height: 100%;
-
-  font-family: sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 .root {
   height: 100%;
   overflow: hidden;
-}
-
-code {
-  font-family: sans-serif,
-    monospace;
 }

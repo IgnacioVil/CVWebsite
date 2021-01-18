@@ -9,18 +9,17 @@ function usePageViews() {
 }
 
 function Navbar() {
-    let defineNavitems = [];
-    for(let i = 0; i < routes.routes.length; i++){
-        defineNavitems.push(<li className={"navitem"}><NavLink to={routes.routes[i].path} activeClassName="isActive" exact key="{routes.routes[i].path}"> {routes.routes[i].name} </NavLink></li>)
-    }
-
     return <div className={"navbar"}>
         <ul className="navlist">
 
-            {defineNavitems}
+            {routes.routes.map( x => (
+                <li key={x.name} className={"navitem"}><NavLink to={x.path} activeClassName="isActive" exact> {x.name} </NavLink></li>
+            ))}
             <motion.li className={"slider"}
-                       initial={{scale: 0.5}}
-                       animate={{y: (usePageViews() * 100) + "%", scale: 1}}/>
+                       exit={{scale:0}}
+                       animate={{y: (usePageViews() * 100) + "%", scale: 1}}>
+                <div className={"innerSlider"}/>
+            </motion.li>
 
         </ul>
     </div>

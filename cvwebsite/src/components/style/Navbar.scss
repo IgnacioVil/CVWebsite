@@ -7,14 +7,10 @@ $menu-items: 4;
 $size: 35%;
 $height: 15%;
 
-// Colors
-$background-color: #121212;
-$indicator-color: #e82d00;
-
 
 .navbar {
     padding: 0;
-    margin-left: 25px;
+    margin-left: 1%;
     height: $size;
 
     flex-basis: 13%;
@@ -37,27 +33,31 @@ $indicator-color: #e82d00;
 
 .navitem {
     display: flex;
+    min-width: 100px;
     height: $height;
 
     align-items: center;
     justify-content: center;
+    z-index: 2;
 
 
 
     &:hover {
-        color: $indicator-color;
+        color: var(--highlight-color);
         font-size: 1.1em;
     }
 
     & a {
-        color: $background-color;
+        color: var(--highlight-color);
         text-decoration: none;
         text-align: center;
+        font-weight: bold;
         width: 100%;
+        z-index: 2;
     }
 
     & a.isActive {
-        color: $indicator-color !important;
+        color: var(--background-color);
     }
 }
 
@@ -66,6 +66,16 @@ $indicator-color: #e82d00;
     width: 100%;
     height: $height;
     top: 0;
-    z-index: -1;
-    background: #121212;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.innerSlider {
+    flex: 0.5;
+    background: var(--highlight-color);
+    height: 50%;
+    width: 25%;
+    border-radius: 5px;
 }

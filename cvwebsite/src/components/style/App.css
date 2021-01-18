@@ -1,4 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+.light-theme2 {
+    --primary-color: #212121;
+    --highlight-color: #e0715a;
+    --highlight-secondary-color: #ece663;
+    --background-color: #efefef;
+}
+
+.light-theme {
+    --primary-color: #9D8D8F;
+    --secondary-color: #e3e3e3;
+    --highlight-color: #FAED26;
+    --background-color: #9B786F;
+    --white-color: #EEE;
+    --black-color: #212121;
+}
+
+.text-primary {
+    color: var(--primary-color);
+}
+
+.text-secondary {
+    color: var(--secondary-color);
+}
+
+.text-highlight {
+    color: var(--highlight-color);
+}
+
+.text-background {
+    color: var(--background-color);
+}
+
+.text-white {
+    color: var(--white-color);;
+}
+
+.text-black {
+    color: var(--black-color);
+}
+
 .mainContainer {
+    background: var(--background-color);
+
+    font-family: 'Beba Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+
     display: flex;
     height: 100%;
     align-items: center;
@@ -8,6 +59,28 @@
 .contentContainer {
     position: relative;
     flex: 1;
-    margin-left: 25px;
-    margin-right: 25px;
+    margin: 0 2%;
+    height: 75%;
+}
+
+.curtain {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    text-align: center;
+
+    background: #121212;
+    z-index: 1000;
+    bottom: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+}
+
+.curtainTitle {
+    color: white;
 }

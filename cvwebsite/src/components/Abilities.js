@@ -1,10 +1,7 @@
 import React from "react";
-import ContentPage from "./ContentPage";
 
 const Abilities = () => (
-    <ContentPage>
-        <h1>Abilities</h1>
-    </ContentPage>
+        <h1>Abilities 2</h1>
 );
 
 export default Abilities;
