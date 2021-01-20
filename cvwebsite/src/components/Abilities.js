@@ -1,6 +1,6 @@
 import React from "react";
 
-const Abilities = () => (
+const Abilities = (props) => (
         <h1>Abilities 2</h1>
 );
 

@@ -13,6 +13,8 @@ $height: 15%;
     margin-left: 1%;
     height: $size;
 
+    top: 45vh;
+
     flex-basis: 13%;
 
     display: flex;
@@ -37,7 +39,7 @@ $height: 15%;
     height: $height;
 
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     z-index: 2;
 
 
@@ -48,11 +50,12 @@ $height: 15%;
     }
 
     & a {
-        color: var(--highlight-color);
+        color: var(--secondary-color);
         text-decoration: none;
         text-align: center;
         font-weight: bold;
-        width: 100%;
+        font-size: 1.75em;
+        margin-left: 10%;
         z-index: 2;
     }
 
@@ -73,9 +76,9 @@ $height: 15%;
 }
 
 .innerSlider {
-    flex: 0.5;
+    flex: 1;
     background: var(--highlight-color);
-    height: 50%;
+    height: 100%;
     width: 25%;
     border-radius: 5px;
 }

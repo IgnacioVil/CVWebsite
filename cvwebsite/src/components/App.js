@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useState, useEffect} from 'react';
 import Navbar from './Navbar';
 import "./style/App.css";
 
@@ -7,7 +7,7 @@ import {Switch, Route, useLocation, useHistory} from "react-router-dom";
 import * as routes from "../constants/routes";
 import {AnimatePresence, motion} from "framer-motion";
 import {getPageIndex} from "../constants/routes";
-import ContentPage from "./ContentPage";
+import ContentPage, {getContentContainerSize} from "./ContentPage";
 let prevLocation = null;
 
 const App = () => {
@@ -20,6 +20,7 @@ const App = () => {
 
     const [isScrollLocked, setScrollLock] = useState(false);
     const [isDown, setIsDown] = useState(true);
+
 
     function scrollLock(delay){
         setScrollLock(true);
@@ -55,11 +56,11 @@ const App = () => {
         {/*    <motion.h1 className={"curtainTitle"} animate={{opacity: 0}} transition={{duration:0.75, ease:[0.5, 0.15, 0.5, 1]}}>Ignacio Villanueva</motion.h1>*/}
         {/*</motion.div>*/}
         <Navbar />
-        <div className="contentContainer">
+        <div className={"contentContainer"}>
             <AnimatePresence custom={isDown}>
                 <Switch location={location} key={location.pathname}>
                     { routes.routes.map((x) => (<Route key={x.path} path={x.path} exact render={() => (
-                        <ContentPage key={isDown} isDown={isDown} itemName={x.name}>
+                        <ContentPage isDown={isDown}>
                             {x.component()}
                         </ContentPage>
                     )} /> ))}

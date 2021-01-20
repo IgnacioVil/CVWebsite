@@ -12,13 +12,19 @@ export class Route {
     }
 }
 
+export const HOME = {path: "/", name: "Home", component: Home};
+export const ABILITIES = {path: "/abilities", name: "Abilities", component: Abilities};
+export const EXPERIENCE = {path: "/experience", name: "Experience", component: Experience};
+export const HOBBIES = {path: "/hobbies", name: "Hobbies", component: Hobbies};
+
 export const routes = [
-    {path: "/", name: "Home", component: Home},
-    {path: "/abilities", name: "Abilities", component: Abilities},
-    {path: "/experience", name: "Experience", component: Experience},
-    {path: "/hobbies", name: "Hobbies", component: Hobbies},
-    {path: "/bitach", name: "BIATCH", component: Hobbies},
+    HOME,
+    ABILITIES,
+    EXPERIENCE,
+    HOBBIES,
 ]
+
+
 
 export function getPageIndex(page){
     for(let i = 0; i < routes.length; i++){

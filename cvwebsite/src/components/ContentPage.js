@@ -1,9 +1,11 @@
 import {motion} from "framer-motion";
+import * as routes from "../constants/routes";
+import {useLocation} from "react-router-dom";
 
 const pageVariant = {
     enter: (isDown) => {
         return {
-            y: (isDown ? "-":"") + "50vh",
+            y: (isDown ? "":"-") + "50vh",
             opacity: 0,
             transition:{
                 type: "spring",
@@ -22,7 +24,7 @@ const pageVariant = {
 
     exit: (isDown) => {
         return {
-            y: (isDown ? "":"-") + "50vh",
+            y: (isDown ? "-":"") + "50vh",
             opacity: 0,
             transition:{
                 type: "spring",
@@ -31,15 +33,33 @@ const pageVariant = {
         }},
 }
 
-const style = {
-    position: "absolute",
-    height: "100%",
-    width: "100%",
-    margin: "0",
+
+export const ContainerSize = {
+    NORMAL: {
+        position: "absolute",
+        height: "100%",
+        width: "85%",
+        marginLeft: "15%",
+    },
+    FULLSCREEN: {
+        position: "absolute",
+        height: "100%",
+        width: "100%",
+    }
+}
+
+export function getContentContainerSize(path){
+    switch (path){
+        case routes.HOME.path:
+            return ContainerSize.FULLSCREEN;
+        default:
+            return ContainerSize.NORMAL;
+    }
 }
 
 const ContentPage = (props) => {
-    return <motion.div initial={"enter"} animate={"center"} exit={"exit"} custom={props.isDown} variants={pageVariant} style={style}>
+    const location = useLocation();
+    return <motion.div initial={"enter"} animate={"center"} exit={"exit"} custom={props.isDown} variants={pageVariant} style={getContentContainerSize(location.pathname)}>
         {props.children}
     </motion.div>
 }
